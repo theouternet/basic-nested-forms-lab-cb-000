@@ -9,8 +9,19 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
+    @recipe.ingredients.build
   end
 
   def create
   end
+  
+  private 
+  
+  def person_params 
+    params.require(:person).permit(:name, addresses_attributes: [
+      :name,
+      :quantity
+      ])
 end
+
+end 
